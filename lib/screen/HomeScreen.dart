@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 import 'package:neon_movie_app/components/maskImage.dart';
 import 'package:neon_movie_app/constant.dart';
 import 'package:neon_movie_app/models/movie.dart';
@@ -209,7 +210,7 @@ class homeScreen extends StatelessWidget {
                           mask = 'assets/images/mask.png';
                         }
                         return Container(
-                          margin: EdgeInsets.only(left: index==0?20:0),
+                          margin: EdgeInsets.only(left: index == 0 ? 20 : 0),
                           height: 160,
                           width: 142,
                           child: MaskedImage(
@@ -224,6 +225,77 @@ class homeScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Container(
+        height: 64,
+        width: 64,
+        padding: EdgeInsets.all(4),
+        // margin: EdgeInsets.only(top: 40),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Constants.kPinkColor, Constants.KGreenColor],
+          ),
+        ),
+        child: Container(
+          height: 60,
+          width: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Constants.kPinkColor, Constants.KGreenColor],
+            ),
+          ),
+          child: RawMaterialButton(
+            onPressed: () {},
+            shape: CircleBorder(),
+            fillColor: Color(0xFF4B4c57),
+            child: Image.asset('assets/icons/plus.png'),
+          ),
+        ),
+      ),
+      bottomNavigationBar: GlassmorphicContainer(
+        width: screenWidth,
+        height: 92,
+        borderRadius: 0,
+        linearGradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Constants.KWhiteColor.withOpacity(0.1),
+            Constants.KWhiteColor.withOpacity(0.1),
+          ],
+        ),
+        border: 0,
+        blur: 30,
+        borderGradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Constants.KWhiteColor.withOpacity(0.1),
+            Constants.KWhiteColor.withOpacity(0.1),
+          ],
+        ),
+        child: BottomAppBar(
+          color: Colors.transparent,
+          notchMargin: 4,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: IconButton(onPressed: (){}, icon: Image.asset('assets/icons/home.png'))),
+              Expanded(child: IconButton(onPressed: (){}, icon: Icon(Icons.live_tv,color: Colors.white,size: 32,))),
+              Expanded(child: Text('')),
+              Expanded(child: IconButton(onPressed: (){}, icon: Image.asset('assets/icons/category.png'))),
+              Expanded(child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_circle_down,color: Colors.white,size: 32,))),
+              
+            ],
+          ),
         ),
       ),
     );
