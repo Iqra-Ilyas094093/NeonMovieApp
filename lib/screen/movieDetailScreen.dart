@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:neon_movie_app/constant.dart';
 
-class Moviedetailscreen extends StatelessWidget {
+class Moviedetailscreen extends StatefulWidget {
   const Moviedetailscreen({super.key});
+
+  @override
+  State<Moviedetailscreen> createState() => _MoviedetailscreenState();
+}
+
+class _MoviedetailscreenState extends State<Moviedetailscreen> {
+  double rating = 4.2;
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +91,66 @@ class Moviedetailscreen extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Constants.KGreyColor
+                    color: Constants.KGreyColor,
                   ),
                   child: Image.asset('assets/icons/play.png'),
+                ),
+              ),
+            ),
+            Positioned(
+              top: screenHeight * 0.5,
+              child: Container(
+                width: screenWidth,
+                height: screenHeight * 0.5,
+                color: Colors.black,
+                child: Column(
+                  children: [
+                    Text(
+                      'Eternals',
+                      style: TextStyle(
+                        color: Constants.KWhiteColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      '2021 Action Adventure Fantasy 2h 36m',
+                      style: TextStyle(color: Constants.KGreyColor,fontSize: 16),
+                    ),
+                    SizedBox(height: 10),
+                    RatingBarIndicator(
+                      itemSize: 25,
+                      rating: rating,
+                      itemCount: 5,
+                      direction: Axis.horizontal,
+                      unratedColor: Constants.KGreyColor,
+                      itemBuilder:
+                          (context, index) =>
+                              Icon(Icons.star, color: Colors.amber),
+                    ),
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Text(
+                        'Here are we going to add the movie detials in this container and putting them from model',
+                        softWrap: true,
+                        style: TextStyle(
+                          color: Constants.KGreyColor,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                      ),
+                    ),
+                    SizedBox(height: 5,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                      child: Divider(color: Colors.grey.shade800,),
+                    ),
+                    
+                  ],
                 ),
               ),
             ),
